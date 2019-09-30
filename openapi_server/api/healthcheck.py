@@ -4,5 +4,5 @@ def get():
     return 'OK'
 
 def search():
-    return 'OK'
+    return {'status': 'OK'}
     
