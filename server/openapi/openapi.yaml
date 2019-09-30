@@ -1,0 +1,32 @@
+openapi: 3.0.0
+info:
+  title: Python Flask Micro-service Demo
+  version: 1.0.0
+servers:
+- url: http://localhost:9090/v1
+paths:
+  /healthcheck:
+    get:
+      description: Retrieve information regarding service health
+      operationId: healthcheck_get
+      responses:
+        200:
+          content:
+            application/json:
+              example:
+                status: Success
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: OK
+      summary: Health Check
+      tags:
+      - Healthcheck
+      x-openapi-router-controller: server.controllers.healthcheck_controller
+components:
+  schemas:
+    inline_response_200:
+      example:
+        status: status
+      properties:
+        status:
+          type: string

@@ -1,9 +1,16 @@
-FROM python:3.6
+FROM python:3-alpine
 
-RUN mkdir /code
-WORKDIR /code
-ADD . /code/
-RUN pip install -r requirements.txt
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-EXPOSE 9090
-CMD ["python", "/code/app.py"]
+COPY requirements.txt /usr/src/app/
+
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+COPY . /usr/src/app
+
+EXPOSE 8080
+
+ENTRYPOINT ["python3"]
+
+CMD ["-m", "server"]
