@@ -8,7 +8,6 @@ paths:
   /healthcheck:
     get:
       description: Retrieve information regarding service health
-      operationId: healthcheck_get
       responses:
         200:
           content:
@@ -21,7 +20,6 @@ paths:
       summary: Health Check
       tags:
       - Healthcheck
-      x-openapi-router-controller: server.controllers.healthcheck_controller
 components:
   schemas:
     inline_response_200:
